@@ -214,6 +214,7 @@ adb shell dumpsys
 adb shell dumpsys meminfo // 查看内存信息
 adb shell dumpsys battery // 查看电池信息
 adb shell dumpsys batterystats // collects battery data from your device
+dumpsys activity services PackageName // 查看指定包名的所有进程中的service
 ```
 
 #### 截屏
@@ -263,6 +264,11 @@ adb root // restarts the adbd daemon with root permissions
 ```
 adb shell
 ps -p
+```
+
+#### 查看指定进程状态
+```
+ps | grep com.cl.daemon01 
 ```
 
 #### 查看设备信息
