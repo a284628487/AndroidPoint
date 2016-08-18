@@ -62,3 +62,22 @@
 
 - android.media.ThumbnailUtils类，用来获取媒体（图片、视频）缩略图；
 
+- 获取`StatusBar`高度
+```
+int resId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+if (resId > 0) {
+    int statusBarHeight = getResources().getDimensionPixelSize(resId);
+}
+```
+
+- 判断`Activity`是否全屏
+```
+public boolean isFullScreen() { 
+    int flags = ((Activity) context).getWindow().getAttributes().flags; 
+    boolean flag = false; 
+    if ((flags & 1024) == 1024) { 
+	    flag = true; 
+	} 
+	return flag; 
+}
+```
