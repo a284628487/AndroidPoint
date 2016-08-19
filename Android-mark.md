@@ -70,6 +70,17 @@ if (resId > 0) {
 }
 ```
 
+- 获取`StatusBar`高度2
+```
+Rect r = new Rect();
+getWindow().getDecorView().getWindowVisibleDisplayFrame(r);
+// 1280 * 720
+System.out.println(r.top); // 50
+System.out.println(r.bottom); // 1184
+System.out.println(r.left); // 0
+System.out.println(r.right); // 720
+```
+
 - 判断`Activity`是否全屏
 ```
 public boolean isFullScreen() { 
@@ -81,3 +92,10 @@ public boolean isFullScreen() { 
 	return flag; 
 }
 ```
+
+- 获取`Activity`的`ContentView`
+```
+getWindow().findViewById(Window.ID_ANDROID_CONTENT);
+```
+
+
