@@ -98,4 +98,20 @@ public boolean isFullScreen() { 
 getWindow().findViewById(Window.ID_ANDROID_CONTENT);
 ```
 
+- `Home`键点击
+
+```
+IntentFilter filter = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
+receiver = new BroadcastReceiver() {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        if (intent.getAction().equals(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)) {
+            String extra = intent.getStringExtra("reason"); // homekey
+            Log.e("tag", "" + extra);
+        }
+    }
+};
+registerReceiver(receiver, filter);
+```
+
 
