@@ -1,0 +1,39 @@
+
+// xml/test.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <files-path name="my_files" path="/"/>
+</paths>
+
+
+// .java
+        File myFile = new File(getFilesDir(), "fileShare.txt");
+        try {
+            FileOutputStream fos = new FileOutputStream(myFile);
+            fos.write("FileShare".getBytes());
+            fos.flush();
+            fos.close();
+        } catch (Exception e) {
+            Log.e(TAG, "onCreate: " + e);
+        }
+        Uri contentUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".ccfyyn", myFile);
+        Log.e(TAG, "onCreate: " + contentUri.getScheme()); // content
+        Log.e(TAG, "onCreate: " + contentUri.getAuthority()); // com.example.ccfyyn.ccfyyn
+        Log.e(TAG, "onCreate: " + contentUri.getHost()); // com.example.ccfyyn.ccfyyn
+        Log.e(TAG, "onCreate: " + contentUri.getPath()); // /my_files/fileShare.txt
+        // Intent intent = new Intent(Intent.ACTION_SEND, contentUri);
+        // startActivity(intent);
+
+
+// AndroidManifest.xml
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.ccfyyn"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/test" />
+        </provider>
+
